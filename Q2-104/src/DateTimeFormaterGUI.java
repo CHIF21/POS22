@@ -28,26 +28,38 @@ public class DateTimeFormaterGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    if(cbDate.isSelected()){
-                       tfFormat.setText(DateTimeFormater.format("D",Integer.parseInt(tfDay.getText()),
-                               Integer.parseInt(tfMonth.getText()),Integer.parseInt(tfYear.getText())));
-                    }
-                     if(cbTime.isSelected()){
-                        tfFormat.setText(DateTimeFormater.format("T",Integer.parseInt(tfHour.getText()),
-                                Integer.parseInt(tfMinute.getText())));
-                    }
-                     if(cbDate.isSelected() && cbTime.isSelected()){
-                        tfFormat.setText(DateTimeFormater.format("DT",Integer.parseInt(tfDay.getText()),
-                                Integer.parseInt(tfMonth.getText()),
-                                Integer.parseInt(tfYear.getText()),Integer.parseInt(tfHour.getText()),
-                                Integer.parseInt(tfMinute.getText())));
+                    if(cbDate.isSelected() && !cbTime.isSelected()){
+                        try {
+                            tfFormat.setText(DateTimeFormater.format("D", Integer.parseInt(tfDay.getText()),
+                                    Integer.parseInt(tfMonth.getText()), Integer.parseInt(tfYear.getText())));
+                        } catch(NumberFormatException ex) {
+                            JOptionPane.showMessageDialog(null, "Sie müssen alle Werte für das Datum ausfüllen.", "Fehler!", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
 
-                }/*catch(InputMismatchException ex){
-                    JOptionPane.showMessageDialog(null, "Please enter every Information that is needed!\n" + ex.getMessage());
-                }*/catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
-                };
+                     if(cbTime.isSelected() && !cbDate.isSelected()){
+                         try {
+                             tfFormat.setText(DateTimeFormater.format("T", Integer.parseInt(tfHour.getText()),
+                                     Integer.parseInt(tfMinute.getText())));
+                         } catch(NumberFormatException ex) {
+                             JOptionPane.showMessageDialog(null, "Sie müssen alle Werte für die Uhrzeit ausfüllen", "Fehler!", JOptionPane.ERROR_MESSAGE);
+                         }
+                    }
+
+                     if(cbDate.isSelected() && cbTime.isSelected()){
+                         try {
+                             tfFormat.setText(DateTimeFormater.format("DT", Integer.parseInt(tfDay.getText()),
+                                     Integer.parseInt(tfMonth.getText()),
+                                     Integer.parseInt(tfYear.getText()), Integer.parseInt(tfHour.getText()),
+                                     Integer.parseInt(tfMinute.getText())));
+                         } catch(NumberFormatException ex) {
+                             JOptionPane.showMessageDialog(null, "Sie müssen alle Werte für das Datum und die Uhrzeit ausfüllen.", "Fehler!", JOptionPane.ERROR_MESSAGE);
+                         }
+                    }
+
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Fehler bei Übergabeparameter", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
     }
