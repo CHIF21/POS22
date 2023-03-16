@@ -27,7 +27,7 @@ public class DateTimeFormater {
             if(values.length == 3)
             {
                 for (int i = 0; i < values.length; i++) {
-                    if(i+1 != values.length){
+                    if(i < values.length - 1){
                         output += String.format("%02d-",values[i]);
                     }
                     else{
@@ -43,7 +43,7 @@ public class DateTimeFormater {
         if(formatString.equals("T")){
             if(values.length == 2){
                 for (int i = 0; i < values.length; i++) {
-                    if(i+1 != values.length){
+                    if(i < values.length - 1){
                         output += String.format("%02d:",values[i]);
                     }
                     else{
