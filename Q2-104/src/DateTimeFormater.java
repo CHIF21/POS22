@@ -1,12 +1,10 @@
 public class DateTimeFormater {
 
-    public static String format(String formatString, int... values) {
+    public static String format(String formatString, int... values) throws Exception {
         String output = "";
 
         if(formatString.equals("DT")) {
-            if (!(values.length == 5)) {
-                throw new NumberFormatException("You need five parameters!");
-            } else {
+            if (values.length == 5) {
                 for (int i = 0; i < values.length; i++) {
                     if (i + 1 <= 2) {
                         output += String.format("%02d-", values[i]);
@@ -20,10 +18,14 @@ public class DateTimeFormater {
                         output += String.format("%02d", values[i]);
                     }
                 }
+            } else {
+                throw new Exception("You need five parameters!");
             }
         }
+
         if(formatString.equals("D")){
-            if(values.length == 3){
+            if(values.length == 3)
+            {
                 for (int i = 0; i < values.length; i++) {
                     if(i+1 != values.length){
                         output += String.format("%02d-",values[i]);
@@ -34,9 +36,10 @@ public class DateTimeFormater {
                 }
             }
             else{
-                throw new NumberFormatException("You need three parameters!");
+                throw new Exception("You need three parameters!");
             }
         }
+
         if(formatString.equals("T")){
             if(values.length == 2){
                 for (int i = 0; i < values.length; i++) {
@@ -49,9 +52,9 @@ public class DateTimeFormater {
                 }
             }
             else{
-                throw new NumberFormatException("You need two parameters!");
+                throw new Exception("You need two parameters!");
             }
         }
         return output;
-        }
+    }
 }
