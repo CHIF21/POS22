@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="demo_defaultlistmodel.DefaultListModelGUI">
+  <grid id="27dc6" binding="paMain" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="419a5" binding="paAction" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="cbf83" class="javax.swing.JButton" binding="btInsert">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="insert"/>
+            </properties>
+          </component>
+          <component id="69a26" class="javax.swing.JButton" binding="btRemove">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="remove"/>
+            </properties>
+          </component>
+          <component id="2af58" class="javax.swing.JButton" binding="btLoadFromFile">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="load from file"/>
+            </properties>
+          </component>
+          <component id="c7591" class="javax.swing.JButton" binding="btSaveToFile">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="save to file"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <scrollpane id="8cd10">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none" title="Data"/>
+        <children>
+          <component id="66beb" class="javax.swing.JList" binding="liData">
+            <constraints/>
+            <properties>
+              <selectionMode value="2"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>
