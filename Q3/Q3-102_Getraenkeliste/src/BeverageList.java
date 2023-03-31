@@ -38,7 +38,7 @@ public class BeverageList {
 
     public void removeDuplicates() {
         sortList();
-        for(int i = softdrinkList.size() - 1; i > 0; i--) {
+        for(int i = softdrinkList.size() - 1; i >= 0; i--) {
             int count = 0;
             for(int j = 0; j < softdrinkList.size() - 1; j++) {
                 if(softdrinkList.get(i).equals(softdrinkList.get(j))) {
