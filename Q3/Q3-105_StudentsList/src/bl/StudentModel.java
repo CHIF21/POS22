@@ -35,10 +35,8 @@ public class StudentModel extends AbstractListModel<Student> {
         }
     }
 
-    public void removeStudent(int[] values) {
-        for(int i = values.length - 1; i >= 0; i--) {
-            allStudents.remove(values[i]);
-        }
+    public void removeStudent(List<Student> students) {
+        allStudents.removeAll(students);
         this.fireContentsChanged(this, 0, allStudents.size()-1);
     }
 

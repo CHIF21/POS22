@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class StudentListGUI {
@@ -49,8 +50,7 @@ public class StudentListGUI {
             return;
         }
 
-        int index = liStudentData.getSelectedIndex();
-        Student oldStudent = sm.getElementAt(index);
+        Student oldStudent = liStudentData.getSelectedValue();
 
         try {
             Student newStudent = new Student(tfFirstName.getText(), tfLastName.getText(), LocalDate.parse(tfDate.getText(), Student.getDtf()));
@@ -61,8 +61,8 @@ public class StudentListGUI {
     }
 
     private void onRemove() {
-        int[] indecies = liStudentData.getSelectedIndices();
-        sm.removeStudent(indecies);
+        List<Student> students = liStudentData.getSelectedValuesList();
+        sm.removeStudent(students);
     }
 
     public void onInsert() {
@@ -76,14 +76,10 @@ public class StudentListGUI {
     }
 
     public void onDisplay() {
-        int[] indecies = liStudentData.getSelectedIndices();
-        if(indecies.length != 1) {
-            JOptionPane.showMessageDialog(new JLabel(), "You can only select one student!", "Something went wrong", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        tfFirstName.setText(sm.getElementAt(indecies[0]).getFirstname());
-        tfLastName.setText(sm.getElementAt(indecies[0]).getLastName());
-        tfDate.setText(Student.getDtf().format(sm.getElementAt(indecies[0]).getDateOfBirth()));
+        Student student = liStudentData.getSelectedValue();
+        tfFirstName.setText(student.getFirstname());
+        tfLastName.setText(student.getLastName());
+        tfDate.setText(Student.getDtf().format(student.getDateOfBirth()));
     }
 
     public boolean isBlank() {
